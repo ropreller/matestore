@@ -1,17 +1,15 @@
 import React from "react";
-import { Navbar } from "react-bootstrap";
-import { Container } from "react-bootstrap";
-import { Nav } from "react-bootstrap";
+import { Navbar as NavBarSitio, Container, Nav } from "react-bootstrap";
 
-const NavBarSitio = () => {
+const NavBar = () => {
     // Nota: Debí cambiar el nombre de la constante de Navbar a NabBarSitio, ya que el nombre original choca con el import de bootstrap.
     return (
         <>
-            <Navbar bg="dark" variant="dark" sticky="top">
+            <NavBarSitio bg="dark" variant="dark" sticky="top">
                 <Container fluid>
-                    <Navbar.Brand href="#home">
+                    <NavBarSitio.Brand href="#home">
                         <img alt="LogoKM" src="../../../img/klub.png" width="60" height="60" className="d-inline-block align-top" />
-                    </Navbar.Brand>
+                    </NavBarSitio.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="#calabazas">Calabazas</Nav.Link>
                         <Nav.Link href="#bombillas">Bombillas</Nav.Link>
@@ -21,9 +19,9 @@ const NavBarSitio = () => {
                         <Nav.Link href="#contacto">Contacto</Nav.Link>
                     </Nav>
                 </Container>
-            </Navbar>
+            </NavBarSitio>
         </>
     );
 }
 
-export default NavBarSitio;
+export default NavBar;

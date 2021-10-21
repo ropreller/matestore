@@ -1,15 +1,17 @@
 import React from 'react';
-import NavBarSitio from '../components/Navbar';
+import NavBar from '../components/Navbar/Navbar';
 import Welcome from '../components/Welcome';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
+import ItemListContainer from '../components/ItemListContainer/ItemListContainer';
 const Home = () => {
     return (
         <>
-            <NavBarSitio />
+            <NavBar />
             <Welcome saludo='Rodrigo' />
-            <Footer />
+            <ItemListContainer />
+            
         </>
-    )
-};
+    );
+}
 
 export default Home;

@@ -8,5 +8,5 @@ const Welcome = ({ saludo }) => {
             </h2>
         </>
     );
-};
+}
 export default Welcome;
