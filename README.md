@@ -39,4 +39,4 @@ El sitio se refrescará si se edita el proyecto. De aparecer errores, se refleja
 
 Rodrigo Oportus Preller
 
-![Sistema en funciomamiento]
+![Sistema en funciomamiento](https://github.com/ropreller/matestore/blob/master/klubmate.gif)
