@@ -8,8 +8,8 @@ const ItemList = ({ productos }) => {
             <Container>
                 <Row>
                     {productos.map((producto) =>
-                        <Col>
-                            <Item key={producto.id} nombre={producto.nombre} desc={producto.desc} valor={producto.valor} imagen={producto.imagen} />
+                        <Col key={producto.id}>
+                            <Item id={producto.id} nombre={producto.nombre} desc={producto.desc} valor={producto.valor} imagen={producto.imagen} />
                         </Col>
                     )}
                 </Row>

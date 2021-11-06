@@ -2,23 +2,27 @@ import React, { useState, useEffect } from "react";
 import data from '../../data/data';
 import ItemList from "./ItemList/ItemList";
 import { Spinner, Container, Row, Col } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = (props) => {
 
     const [productos, setProductos] = useState([])
     const [cargando, setCargando] = useState(true)
+    const { idCategoria } = useParams();
+    console.log(idCategoria);
 
     useEffect(() => {
+        setCargando(true);
         const listaDeProductos = new Promise((res, rej) => {
             setTimeout(() => {
                 res(data)
-            }, 3000)
+            }, 1000)
         })
         listaDeProductos.then((data) => {
-            setProductos(data)
+            idCategoria ? setProductos(data.filter(i => i.categoria === idCategoria)) : setProductos(data)
             setCargando(false)
         })
-    }, [productos]) // [Listener del cambio de estado productos]
+    }, [idCategoria]) // [Listener del cambio de estado productos]
 
     return (
         <div>

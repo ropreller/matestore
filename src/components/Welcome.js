@@ -1,11 +1,20 @@
 import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 const Welcome = ({ saludo }) => {
     return (
         <>
-            <h2>
-                Bienvenido, {saludo ?? 'Usuario no registrado'}
-            </h2>
+            <Container>
+                <Row>
+                    <Col></Col>
+                    <Col>
+                        <h4>
+                            Tienda online de productos de mate. ¡Revise nuestras categorías!.
+                        </h4>
+                    </Col>
+                    <Col></Col>
+                </Row>
+            </Container>
         </>
     );
 }
