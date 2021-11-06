@@ -34,9 +34,9 @@ El sitio se refrescará si se edita el proyecto. De aparecer errores, se refleja
 - Se utilizará Firebase para el manejo de datos.
 
 ## Aplicación en funcionamiento
-
+![Sistema en funciomamiento](https://github.com/ropreller/matestore/blob/master/klubmate.gif)
 ## Autor
 
-Rodrigo Oportus Preller
+Rodrigo Oportus Preller, para el curso ReactJS de Coderhouse 2021.
 
-![Sistema en funciomamiento](https://github.com/ropreller/matestore/blob/master/klubmate.gif)
+
