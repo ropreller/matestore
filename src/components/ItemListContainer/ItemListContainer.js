@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import data from '../../data/data';
 import ItemList from "./ItemList/ItemList";
-import { Spinner, Container, Row, Col } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const ItemListContainer = (props) => {
@@ -26,7 +26,7 @@ const ItemListContainer = (props) => {
 
     return (
         <div>
-            {cargando ? <Container><Row className="justify-content-md-center"> <Col><Spinner animation="border" /></Col></Row> </Container> : <ItemList productos={productos} />}
+            {cargando ? <Spinner animation="border" /> : <ItemList productos={productos} />}
         </div>
     );
 }
