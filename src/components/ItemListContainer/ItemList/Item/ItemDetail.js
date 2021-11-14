@@ -3,6 +3,9 @@ import { Card, Button } from "react-bootstrap";
 import ItemCount from "../../../itemCount/ItemCount";
 import { Link } from "react-router-dom";
 import { Context } from "../../../../context/CartContext";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
 
 
 export const ItemDetail = ({ id, nombre, desc, valor, imagen, stock }) => {
@@ -12,7 +15,18 @@ export const ItemDetail = ({ id, nombre, desc, valor, imagen, stock }) => {
     const agregar = (props) => {
         setBuy(true);
         onAdd({ id, nombre, valor, imagen }, props.unidades)
-        alert(`agregaste ${props.unidades} al carrito`)
+        //alert(`agregaste ${props.unidades} al carrito`)
+        MySwal.fire({
+            title: <p>Hello World</p>,
+            footer: 'Copyright 2022',
+            didOpen: () => {
+              // `MySwal` is a subclass of `Swal`
+              //   with all the same instance & static methods
+              MySwal.clickConfirm()
+            }
+          }).then(() => {
+            return MySwal.fire(<p>agregaste {props.unidades} al carrito</p>)
+          })
     }
 
 

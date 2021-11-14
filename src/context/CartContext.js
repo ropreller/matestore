@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
 
 const Context = React.createContext();
 
@@ -30,7 +33,17 @@ const CartFunction = ({ children }) => {
         setCart([]);
         setTotal(0);
         setUnidades(0);
-        alert('Items borrados del carrito');
+        MySwal.fire({
+            title: <p>Hello World</p>,
+            footer: 'Copyright 2022',
+            didOpen: () => {
+              // `MySwal` is a subclass of `Swal`
+              //   with all the same instance & static methods
+              MySwal.clickConfirm()
+            }
+          }).then(() => {
+            return MySwal.fire(<p>Se ha vaciado el carrito.</p>)
+          })
     }
 
     return <Context.Provider value={{ cart, unidades, total, onAdd, onClear }}>
