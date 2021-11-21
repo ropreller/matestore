@@ -26,7 +26,9 @@ const Cart = () => {
                                 <p className="detalleCompra">Cantidad:  {cartItem.cantidad} </p>
                                 <p className="detalleCompra">Precio unitario  ${cartItem.valor}</p>
                                 <p className="detalleCompra">Subtotal  ${cartItem.valor * cartItem.cantidad}</p>
-                                <Button variant="alert" className="detalleCompra" onClick={() => onRemoveItem(cartItem.id,cartItem.cantidad,cartItem.valor)} >Quitar</Button>
+                                <div className="detalleCompra"> 
+                                <Button variant="warning" onClick={() => onRemoveItem(cartItem.id,cartItem.cantidad,cartItem.valor)} >Quitar</Button>
+                                </div>
                                 <hr />
                             </div>
 

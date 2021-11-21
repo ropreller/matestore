@@ -4,11 +4,13 @@ import ItemList from "./ItemList/ItemList";
 import { Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
+
 const ItemListContainer = (props) => {
 
     const [productos, setProductos] = useState([])
     const [cargando, setCargando] = useState(true)
     const { idCategoria } = useParams();
+    console.log(idCategoria);
 
     useEffect(() => {
         setCargando(true);
