@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import data from '../../data/data';
+import { collection, query, getDocs, where } from "firebase/firestore";
+import { getFirstoreDB } from "../../lib/Firebase";
 import ItemList from "./ItemList/ItemList";
 import { Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -7,23 +8,29 @@ import { useParams } from "react-router-dom";
 
 const ItemListContainer = (props) => {
 
-    const [productos, setProductos] = useState([])
-    const [cargando, setCargando] = useState(true)
+    const db = getFirstoreDB();
+    const [productos, setProductos] = useState([]);
+    const [cargando, setCargando] = useState(true);
     const { idCategoria } = useParams();
     console.log(idCategoria);
 
+
     useEffect(() => {
-        setCargando(true);
-        const listaDeProductos = new Promise((res, rej) => {
-            setTimeout(() => {
-                res(data)
-            }, 1000)
-        })
-        listaDeProductos.then((data) => {
-            idCategoria ? setProductos(data.filter(i => i.categoria === idCategoria)) : setProductos(data)
-            setCargando(false)
-        })
-    }, [idCategoria]) // [Listener del cambio de estado productos]
+        const myItems = idCategoria ?
+            query(collection(db, 'products'), where("categoria", "==", idCategoria))
+            :
+            collection(db, 'products');
+        getDocs(myItems)
+            .then((res) => {
+                const results = res.docs.map((doc) => {
+                    return { ...doc.data() };
+                });
+                setProductos(results)
+            }).finally(() => {
+                setCargando(false)
+            })
+
+    }, [idCategoria]);
 
     return (
         <div>

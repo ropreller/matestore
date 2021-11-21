@@ -16,8 +16,8 @@ const CartWidget = () => {
                     <ListGroup variant="flush">
 
                         {cart.map((cartItem) =>
-                            <ListGroup.Item>
-                                <div key={cartItem.id}>
+                            <ListGroup.Item key={cartItem.id}>
+                                <div>
                                     <img src={cartItem.imagen} alt={cartItem.nombre} className="imgWidget" />
 
                                     <h6 className="detalleCompra"> {cartItem.nombre}</h6>
@@ -30,7 +30,6 @@ const CartWidget = () => {
                     </ListGroup>
                 </Card> :
                 ' '}
-
         </>
     )
 }

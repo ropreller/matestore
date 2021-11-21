@@ -47,11 +47,6 @@ const Home = () => {
                                 </Switch>
                             </Col>
                         </Row>
-                        <Row>
-                            <Col>
-                                
-                            </Col>
-                        </Row>
                     </Container>
                     <CartWidget />
                 </CartFunction>
