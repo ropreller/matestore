@@ -6,7 +6,7 @@ import CarritoIcono from "./CarritoIcono";
 import { Context } from "../../context/CartContext";
 
 const NavBar = () => {
-    const { cart,cantidadItems } = useContext(Context)
+    const { cantidadItems } = useContext(Context)
     return (
         <>
             <NavBarSitio bg="dark" variant="dark" sticky="top">
