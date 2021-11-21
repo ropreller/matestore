@@ -6,11 +6,9 @@ const ItemCount = (props) => {
     const [stock, setStock] = useState(props.stock);
     const [unidades, setUnidades] = useState(0);
     const [carro, setCarro] = useState(0);
-
     const handleStock = {
         sumaStock: () => {
             if (stock === 0) {
-                //alert('No hay stock');s
             } else {
                 setUnidades(unidades + 1);
                 setStock(stock - 1);
@@ -18,7 +16,7 @@ const ItemCount = (props) => {
             }
         },
         restaStock: () => {
-            if (unidades === 1) {
+            if (unidades === 1 || unidades === 0) {
                 //alert('No se puede seleccionar menos de 0');
             } else {
                 setUnidades(unidades - 1);

@@ -6,7 +6,7 @@ import CarritoIcono from "./CarritoIcono";
 import { Context } from "../../context/CartContext";
 
 const NavBar = () => {
-    const { cart } = useContext(Context)
+    const { cart,cantidadItems } = useContext(Context)
     return (
         <>
             <NavBarSitio bg="dark" variant="dark" sticky="top">
@@ -25,7 +25,7 @@ const NavBar = () => {
                     <NavBarSitio.Collapse className="justify-content-end">
                         <NavBarSitio.Text>
                             <Link to="/cart">
-                                <CarritoIcono items={cart.length}/>
+                                <CarritoIcono items={cantidadItems}/>
                             </Link>
                         </NavBarSitio.Text>
                     </NavBarSitio.Collapse>

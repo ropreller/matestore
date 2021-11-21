@@ -4,6 +4,7 @@ import ImgFront from '../components/ImgFront';
 import Welcome from '../components/Welcome';
 import ItemListContainer from '../components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from '../components/ItemListContainer/ItemList/Item/ItemDetailContainer';
+import CartWidget from '../components/cart/CartWidget';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { CartFunction } from '../context/CartContext';
 import Cart from '../components/cart/Cart';
@@ -46,8 +47,13 @@ const Home = () => {
                                 </Switch>
                             </Col>
                         </Row>
+                        <Row>
+                            <Col>
+                                
+                            </Col>
+                        </Row>
                     </Container>
-
+                    <CartWidget />
                 </CartFunction>
             </BrowserRouter>
         </>

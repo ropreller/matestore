@@ -10,18 +10,32 @@ const MySwal = withReactContent(Swal)
 
 export const ItemDetail = ({ id, nombre, desc, valor, imagen, stock }) => {
     const [buy, setBuy] = useState(false);
-    const { onAdd } = useContext(Context)
+    const { cart, onAdd } = useContext(Context)
+
+    // checkear si item existe en el carrito:
+    const itemEnCarro = cart.find(item => item.id === id)
+    if (!itemEnCarro) {
+       console.log("item NO en carro")
+    } else {
+        cart.map((item) => {
+            if (item.id === id) {
+                console.log("Unidades que hay en carro: ",item.cantidad)
+                stock -= item.cantidad
+            }
+            return item
+        })
+    }
+
+
 
     const agregar = (props) => {
         setBuy(true);
-        onAdd({ id, nombre, valor, imagen }, props.unidades)
+        onAdd({ id,stock, nombre, valor, imagen }, props.unidades)
         //alert(`agregaste ${props.unidades} al carrito`)
         MySwal.fire({
             title: <p>Hello World</p>,
             footer: 'Copyright 2022',
             didOpen: () => {
-              // `MySwal` is a subclass of `Swal`
-              //   with all the same instance & static methods
               MySwal.clickConfirm()
             }
           }).then(() => {
