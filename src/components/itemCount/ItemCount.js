@@ -30,7 +30,7 @@ const ItemCount = (props) => {
         <div>
             <div>
                 <Button variant="secondary" onClick={handleStock.restaStock} > - </Button>
-                <p>{unidades}</p>
+                &nbsp;&nbsp;{unidades}&nbsp;&nbsp;
                 <Button variant="secondary" onClick={handleStock.sumaStock} > + </Button>
             </div>
             <div>

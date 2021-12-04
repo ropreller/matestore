@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { collection, query, getDocs, where } from "firebase/firestore";
-import { getFirstoreDB } from "../../lib/Firebase";
+import { query, getDocs, where } from "firebase/firestore";
+import { getCollection, getFirstoreDB } from "../../lib/Firebase";
 import ItemList from "./ItemList/ItemList";
 import { Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -17,9 +17,9 @@ const ItemListContainer = (props) => {
 
     useEffect(() => {
         const myItems = idCategoria ?
-            query(collection(db, 'products'), where("categoria", "==", idCategoria))
+            query(getCollection(db, 'products'), where("categoria", "==", idCategoria))
             :
-            collection(db, 'products');
+            getCollection(db, 'products');
         getDocs(myItems)
             .then((res) => {
                 const results = res.docs.map((doc) => {

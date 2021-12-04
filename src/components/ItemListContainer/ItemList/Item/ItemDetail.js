@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import ItemCount from "../../../itemCount/ItemCount";
 import { Link } from "react-router-dom";
 import { Context } from "../../../../context/CartContext";
@@ -15,11 +15,11 @@ export const ItemDetail = ({ id, nombre, desc, valor, imagen, stock }) => {
     // checkear si item existe en el carrito:
     const itemEnCarro = cart.find(item => item.id === id)
     if (!itemEnCarro) {
-       console.log("item NO en carro")
+        console.log("item NO en carro")
     } else {
         cart.map((item) => {
             if (item.id === id) {
-                console.log("Unidades que hay en carro: ",item.cantidad)
+                console.log("Unidades que hay en carro: ", item.cantidad)
                 stock -= item.cantidad
             }
             return item
@@ -30,39 +30,39 @@ export const ItemDetail = ({ id, nombre, desc, valor, imagen, stock }) => {
 
     const agregar = (props) => {
         setBuy(true);
-        onAdd({ id,stock, nombre, valor, imagen }, props.unidades)
+        onAdd({ id, stock, nombre, valor, imagen }, props.unidades)
         //alert(`agregaste ${props.unidades} al carrito`)
         MySwal.fire({
             title: <p>Hello World</p>,
             footer: 'Copyright 2022',
             didOpen: () => {
-              MySwal.clickConfirm()
+                MySwal.clickConfirm()
             }
-          }).then(() => {
+        }).then(() => {
             return MySwal.fire(<p>agregaste {props.unidades} al carrito</p>)
-          })
+        })
     }
 
 
     return (
         <>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={imagen} />
-                <hr />
-                <Card.Body>
-                    <Card.Title>{nombre}</Card.Title>
-                    <Card.Text>
-                        {desc}
-                    </Card.Text>
-                    <Card.Text>
-                        Precio: ${valor}
-                    </Card.Text>
-                </Card.Body>
-                {!buy ?
-                    <ItemCount stock={stock} onAdd={agregar} /> :
-                    <Link to='/cart'><Button variant="success">Terminar compra</Button></Link>
-                }
-            </Card>
+            <Container>
+                <Row>
+                    <Col>
+                        <Card.Img variant="top" src={imagen} />
+                    </Col>
+                    <Col>
+                        <Card.Title>{nombre}</Card.Title>
+                        <Card.Text>{desc}</Card.Text>
+                        <Card.Text>Precio: ${valor}</Card.Text>
+                        <hr />
+                        {!buy ?
+                          
+                                <ItemCount stock={stock} onAdd={agregar} /> :
+                                <Link to='/cart'><Button variant="success">Terminar compra</Button></Link>}
+                    </Col>
+                </Row>
+            </Container>
         </>
     );
 };
