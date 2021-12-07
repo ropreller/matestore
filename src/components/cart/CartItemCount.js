@@ -1,48 +1,45 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "react-bootstrap";
+import { Context } from "../../context/CartContext";
 
 // Recibe el stock y debe realizar las operaciones suma/resta
-const ItemCount = (props) => {
-    const [stock, setStock] = useState(props.stock);
-    const [unidades, setUnidades] = useState(0);
-    const [carro, setCarro] = useState(0);
+const CartItemCount = (props) => {
+    const [stock, setStock] = useState(props.stock - props.cantidad);
+    const [unidades, setUnidades] = useState(props.cantidad);
+    const { onAddItem, onDeleteItem } = useContext(Context);
+    
     const handleStock = {
         sumaStock: () => {
             if (stock === 0) {
             } else {
                 setUnidades(unidades + 1);
                 setStock(stock - 1);
-                setCarro(1);
+                onAddItem( props.itemId , props.valor,(unidades+1));
             }
         },
         restaStock: () => {
             if (unidades === 1 || unidades === 0) {
-                //alert('No se puede seleccionar menos de 0');
             } else {
                 setUnidades(unidades - 1);
                 setStock(stock + 1);
-                setCarro(1);
+                onDeleteItem( props.itemId , props.valor,(unidades-1));
             }
         }
     }
 
     return (
-        <div>
+        <div className="detalleCompra">
             <div>
                 <Button variant="secondary" onClick={handleStock.restaStock} > - </Button>
-                &nbsp;&nbsp;{unidades}&nbsp;&nbsp;
+                &nbsp;&nbsp;
                 <Button variant="secondary" onClick={handleStock.sumaStock} > + </Button>
             </div>
             <div>
-                <p>Stock disponible: {(stock > 0) ? stock  : "sin stock"}</p>
-            </div>
-            <div>
-                {(carro > 0) ? <Button variant="primary" onClick={() => props.onAddProduct({ unidades })} > Agregar al carrito </Button>
-                    : <Button variant="danger"> Debe añadir items </Button>}
+                <p>Stock: {(stock > 0) ? stock : "sin stock"}</p>
             </div>
         </div>
     )
 
 }
 
-export default ItemCount;
+export default CartItemCount;

@@ -10,7 +10,7 @@ const MySwal = withReactContent(Swal)
 
 export const ItemDetail = ({ id, nombre, desc, valor, imagen, stock }) => {
     const [buy, setBuy] = useState(false);
-    const { cart, onAdd } = useContext(Context)
+    const { cart, onAddProduct } = useContext(Context)
 
     // checkear si item existe en el carrito:
     const itemEnCarro = cart.find(item => item.id === id)
@@ -30,7 +30,7 @@ export const ItemDetail = ({ id, nombre, desc, valor, imagen, stock }) => {
 
     const agregar = (props) => {
         setBuy(true);
-        onAdd({ id, stock, nombre, valor, imagen }, props.unidades)
+        onAddProduct({ id, stock, nombre, valor, imagen }, props.unidades)
         //alert(`agregaste ${props.unidades} al carrito`)
         MySwal.fire({
             title: <p>Hello World</p>,
@@ -58,7 +58,7 @@ export const ItemDetail = ({ id, nombre, desc, valor, imagen, stock }) => {
                         <hr />
                         {!buy ?
                           
-                                <ItemCount stock={stock} onAdd={agregar} /> :
+                                <ItemCount stock={stock} onAddProduct={agregar} /> :
                                 <Link to='/cart'><Button variant="success">Terminar compra</Button></Link>}
                     </Col>
                 </Row>
