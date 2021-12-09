@@ -36,19 +36,30 @@ const CartFunction = ({ children }) => {
         }
     }
     const onClear = () => {
-        setCart([]);
-        setTotal(0);
-        setUnidades(0);
-        setCantidadItems(0)
-        MySwal.fire({
-            title: <p>Hello World</p>,
-            footer: 'Copyright 2022',
-            didOpen: () => {
-                MySwal.clickConfirm()
+
+        Swal.fire({
+            title: 'Vaciar Carrito',
+            text: "¿Estás seguro de vaciar el carrito de compras?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Si'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setCart([]);
+                setTotal(0);
+                setUnidades(0);
+                setCantidadItems(0)
+                Swal.fire(
+                    'Carrito vacío',
+                    '¡Puedes volver a buscar tus productos favoritos!',
+                    'success'
+                )
             }
-        }).then(() => {
-            return MySwal.fire(<p>Se ha vaciado el carrito.</p>)
         })
+
     }
     const onRemoveProduct = (idProducto, unidades, valor) => {
 
@@ -66,11 +77,11 @@ const CartFunction = ({ children }) => {
         setTotal(nuevoTotal)
         setCantidadItems(cantidadItems - unidades)
     }
-    const onAddItem = (idProducto,valor,unidades) => {
+    const onAddItem = (idProducto, valor, unidades) => {
         console.log("unidades es", unidades)
         const cartAux = cart.map((item) => {
             if (item.id === idProducto) {
-                item.cantidad ++
+                item.cantidad++
                 item.subtotal = (valor * item.cantidad)
             }
             return item
@@ -80,10 +91,10 @@ const CartFunction = ({ children }) => {
         setCantidadItems(cantidadItems + 1)
 
     }
-    const onDeleteItem = (idProducto,valor,unidades) => {
+    const onDeleteItem = (idProducto, valor, unidades) => {
         const cartAux = cart.map((item) => {
             if (item.id === idProducto) {
-                item.cantidad --
+                item.cantidad--
                 item.subtotal = (valor * item.cantidad)
             }
             return item
@@ -92,9 +103,24 @@ const CartFunction = ({ children }) => {
         setTotal(total - valor)
         setCantidadItems(cantidadItems - 1)
     }
-    
+    const finalizarCompra = () => {
+        setCart([]);
+        setTotal(0);
+        setUnidades(0);
+        setCantidadItems(0)
+        MySwal.fire({
+            title: <p>Compra</p>,
+            footer: 'Copyright 2022',
+            didOpen: () => {
+                MySwal.clickConfirm()
+            }
+        }).then(() => {
+            return MySwal.fire(<p>Compra realizada!</p>)
+        })
 
-    return <Context.Provider value={{ cart, unidades, cantidadItems, total, onAddProduct, onClear, onRemoveProduct, onAddItem, onDeleteItem }}>
+    }
+
+    return <Context.Provider value={{ cart, unidades, cantidadItems, total, onAddProduct, onClear, onRemoveProduct, onAddItem, onDeleteItem, finalizarCompra }}>
         {children}
     </Context.Provider>
 }

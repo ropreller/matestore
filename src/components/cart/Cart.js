@@ -24,7 +24,7 @@ const Cart = () => {
                             <div key={cartItem.id}>
                                 <img src={cartItem.imagen} alt={cartItem.nombre} />
                                 <h6 className="detalleCompra">{cartItem.nombre}</h6>
-                                <p className="detalleCompra">Cantidad:  {cartItem.cantidad} </p>
+                                <p className="detalleCompra">{cartItem.cantidad} añadidos. </p>
                                 <CartItemCount valor={cartItem.valor} itemId={cartItem.id} stock={cartItem.stock} cantidad={cartItem.cantidad}/>
                                 <p className="detalleCompra">Precio unitario  ${cartItem.valor}</p>
                                 <p className="detalleCompra">Subtotal  ${cartItem.valor * cartItem.cantidad}</p>
@@ -33,12 +33,10 @@ const Cart = () => {
                                 </div>
                                 <hr />
                             </div>
-
                         )}
-                        <h6 className="detalleCompra">Total ${total}</h6>
+                        <h6 className="detalleCompra">Total ${total} <Button variant="danger" className="vaciar" onClick={borrar} >Vaciar carro</Button></h6>
                         <br />
-                        <Button variant="success" className="checkOut" >Checkout</Button>
-                        <Button variant="warning" className="checkOut" onClick={borrar} >Vaciar</Button>
+                        <Link to={`/checkout`}> <Button variant="success" className="checkOut" >Checkout</Button></Link>
                     </div>
                 </div>
                 :

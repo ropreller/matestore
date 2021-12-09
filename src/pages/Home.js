@@ -5,6 +5,8 @@ import Welcome from '../components/Welcome';
 import ItemListContainer from '../components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from '../components/ItemListContainer/ItemList/Item/ItemDetailContainer';
 import CartWidget from '../components/cart/CartWidget';
+import Checkout from '../components/cart/Checkout';
+import Payment from '../components/cart/Payment';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { CartFunction } from '../context/CartContext';
 import Cart from '../components/cart/Cart';
@@ -40,6 +42,12 @@ const Home = () => {
                                     </Route>
                                     <Route exact path="/cart">
                                         <Cart />
+                                    </Route>
+                                    <Route exact path="/checkout">
+                                        <Checkout />
+                                    </Route>
+                                    <Route exact path="/payment">
+                                        <Payment />
                                     </Route>
                                     <Route exact path="*">
                                         <h1>Página no encontrada</h1>
