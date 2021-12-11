@@ -12,7 +12,18 @@ Sus secciones principales son:
 - Envíos (Página para detallar envíos).
 - Contacto (página de contacto).
 
-La tienda permite filtrar por categorías y tendrá un carrito de compra.
+La tienda permite filtrar por categorías y cuenta con carrito de compra.
+Las etapas de la compra son: 
+- Buscar producto
+- Ver producto
+- Agregar stock (en caso que exista disponibilidad)
+- Acceder al carrito
+- Ir al checkout
+- Confirmar compra
+- Ingresar datos de comprador
+- Ingresar orden
+
+Una vez ingresada la orden, el comprador recibe el ID de la misma.
 
 Proyecto creado con REACT [Create React App](https://github.com/facebook/create-react-app).
 
@@ -25,16 +36,16 @@ Una vez clonado el proyecto y situado en la raíz de este, ejecutar:
 Para entrar a la aplicación.\
 Abrir en el browser: [http://localhost:3000](http://localhost:3000).
 
-El sitio se refrescará si se edita el proyecto. De aparecer errores, se reflejarán en la consola.
 
 ## Librerías y dependencias
 
 - React Bootstrap para el diseño: Utilizo esta opción ya que es con la que más estoy familiarizado.
 - React-router-dom para la navegación.
-- Se utilizará Firebase para el manejo de datos.
+- Firebase para manejo de datos.
+- SweetAlert2 para las alertas.
 
 ## Aplicación en funcionamiento
-![Sistema en funciomamiento](https://github.com/ropreller/matestore/blob/master/klubmate.gif)
+![Sistema en funciomamiento](https://github.com/ropreller/matestore/blob/master/klubmateFinal.gif)
 ## Autor
 
 Rodrigo Oportus Preller, para el curso ReactJS de Coderhouse 2021.
