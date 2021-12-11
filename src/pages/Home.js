@@ -7,7 +7,6 @@ import ItemDetailContainer from '../components/ItemListContainer/ItemList/Item/I
 import CartWidget from '../components/cart/CartWidget';
 import Checkout from '../components/cart/Checkout';
 import Payment from '../components/cart/Payment';
-import SiteFooter from '../components/SiteFooter';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { CartFunction } from '../context/CartContext';
 import Cart from '../components/cart/Cart';
@@ -58,7 +57,6 @@ const Home = () => {
                         </Row>
                     </Container>
                     <CartWidget />
-                    <SiteFooter />
                 </CartFunction>
             </BrowserRouter>
         </>
