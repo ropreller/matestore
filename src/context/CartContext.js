@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content'
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 const MySwal = withReactContent(Swal)
 
 const Context = React.createContext();
@@ -10,7 +13,6 @@ const CartFunction = ({ children }) => {
     const [unidades, setUnidades] = useState(0)
     const [total, setTotal] = useState(0)
     const [cantidadItems, setCantidadItems] = useState(0)
-    console.log("cantidad items incial ", cantidadItems)
 
     const onAddProduct = (producto, cantidad) => {
         const itemExiste = cart.find(item => item.id === producto.id)
@@ -103,22 +105,29 @@ const CartFunction = ({ children }) => {
         setTotal(total - valor)
         setCantidadItems(cantidadItems - 1)
     }
-    const finalizarCompra = () => {
+    const finalizarCompra = (orderId) => {
         setCart([]);
         setTotal(0);
         setUnidades(0);
         setCantidadItems(0)
         MySwal.fire({
-            title: <p>Compra</p>,
-            footer: 'Copyright 2022',
+            title: <p>ORDEN INGRESADA</p>,
+            footer: 'Klubmate',
+            showCancelButton: false,
+            showConfirmButton: false,
             didOpen: () => {
                 MySwal.clickConfirm()
             }
         }).then(() => {
-            return MySwal.fire(<p>Compra realizada!</p>)
+            return MySwal.fire(
+            <>
+            <h1>¡Felicitaciones!</h1>
+            <p>Tu orden<br /> <br /> <b>{orderId}</b><br /> <br />fue ingresada con éxito.</p>
+            </>
+            )
         })
-
     }
+
 
     return <Context.Provider value={{ cart, unidades, cantidadItems, total, onAddProduct, onClear, onRemoveProduct, onAddItem, onDeleteItem, finalizarCompra }}>
         {children}

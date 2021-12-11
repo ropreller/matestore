@@ -1,4 +1,4 @@
-import React, {useContext}from "react";
+import React, { useContext } from "react";
 import { Navbar as NavBarSitio, Container, Nav } from "react-bootstrap";
 import rutas from "../../data/rutas";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ const NavBar = () => {
                     <NavBarSitio.Collapse className="justify-content-end">
                         <NavBarSitio.Text>
                             <Link to="/cart">
-                                <CarritoIcono items={cantidadItems}/>
+                                <CarritoIcono items={cantidadItems} />
                             </Link>
                         </NavBarSitio.Text>
                     </NavBarSitio.Collapse>

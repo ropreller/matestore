@@ -33,8 +33,8 @@ export const ItemDetail = ({ id, nombre, desc, valor, imagen, stock }) => {
         onAddProduct({ id, stock, nombre, valor, imagen }, props.unidades)
         //alert(`agregaste ${props.unidades} al carrito`)
         MySwal.fire({
-            title: <p>Hello World</p>,
-            footer: 'Copyright 2022',
+            title: <p>Carrito</p>,
+            footer: 'Klubmate',
             didOpen: () => {
                 MySwal.clickConfirm()
             }
@@ -46,7 +46,7 @@ export const ItemDetail = ({ id, nombre, desc, valor, imagen, stock }) => {
 
     return (
         <>
-            <Container>
+            <Container style={{ marginTop: '2rem', marginBottom: '2rem' }}>
                 <Row>
                     <Col>
                         <Card.Img variant="top" src={imagen} />

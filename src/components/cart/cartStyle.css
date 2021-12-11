@@ -1,28 +1,27 @@
-
 .purchase-card {
-margin: 10px auto;
-width: 400px;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-padding: 1em;
+    margin: 10px auto;
+    width: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 1em;
 }
 
 .purchase-card img, td img{
-width:100px;
-height:auto;
-float:left;
+    width:100px;
+    height:auto;
+    float:left;
 }
 
 .detalleCompra {
-text-align: right;
+    text-align: right;
 }
 
 .tituloCarrito {
-text-align: center;
-padding:30px;
+    text-align: center;
+    padding:30px;
 }
 
 .checkOut{
-width: 100%;
+    width: 100%;
 }
 
 .vaciar{
@@ -33,19 +32,26 @@ width: 100%;
     float:right;
     margin-left:20px;
 }
-
     
 .ocultar {
-display:none;
+    display:none;
 }
 
 .imgWidget{
-width:20px;
-height:auto;
-float:left;
+    width:20px;
+    height:auto;
+    float:left;
+}
+
+.widgetContent{
+    position: sticky;
+    float:right;
+    bottom:75px;
+    width:18rem;
+    padding:0px;
 }
 
 .widget{
-float:right;
-top:50%;
+    float:right;
+    width:100%;
 }

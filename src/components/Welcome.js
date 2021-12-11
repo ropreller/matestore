@@ -4,13 +4,13 @@ import { Container, Row, Col } from "react-bootstrap";
 const Welcome = ({ saludo }) => {
     return (
         <>
-            <Container>
+            <Container style={{marginTop:'2rem',marginBottom:'2rem'}}>
                 <Row>
                     <Col></Col>
                     <Col>
-                        <h4>
-                            Tienda online de productos de mate. ¡Revise nuestras categorías!.
-                        </h4>
+                        <h2>
+                            Productos destacados
+                        </h2>
                     </Col>
                     <Col></Col>
                 </Row>

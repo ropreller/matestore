@@ -1,20 +1,21 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/CartContext";
 import CartItemCount from "./CartItemCount";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import EmptyCart from "./EmptyCart";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./cartStyle.css"
 
 
 const Cart = () => {
 
-    const { cart,  total, onClear, onRemoveProduct } = useContext(Context)
-    
+    const { cart, total, onClear, onRemoveProduct } = useContext(Context)
+
     const borrar = () => {
         onClear();
     }
 
-      return (
+    return (
         <>
             {(cart.length > 0) ?
                 <div>
@@ -25,11 +26,11 @@ const Cart = () => {
                                 <img src={cartItem.imagen} alt={cartItem.nombre} />
                                 <h6 className="detalleCompra">{cartItem.nombre}</h6>
                                 <p className="detalleCompra">{cartItem.cantidad} añadidos. </p>
-                                <CartItemCount valor={cartItem.valor} itemId={cartItem.id} stock={cartItem.stock} cantidad={cartItem.cantidad}/>
+                                <CartItemCount valor={cartItem.valor} itemId={cartItem.id} stock={cartItem.stock} cantidad={cartItem.cantidad} />
                                 <p className="detalleCompra">Precio unitario  ${cartItem.valor}</p>
                                 <p className="detalleCompra">Subtotal  ${cartItem.valor * cartItem.cantidad}</p>
-                                <div className="detalleCompra"> 
-                                <Button variant="warning" onClick={() => onRemoveProduct(cartItem.id,cartItem.cantidad,cartItem.valor)} >Quitar</Button>
+                                <div className="detalleCompra">
+                                    <Button variant="warning" onClick={() => onRemoveProduct(cartItem.id, cartItem.cantidad, cartItem.valor)} >Quitar</Button>
                                 </div>
                                 <hr />
                             </div>
@@ -40,18 +41,7 @@ const Cart = () => {
                     </div>
                 </div>
                 :
-                <Container>
-                    <Row>
-                        <Col></Col>
-                        <Col>
-                            <h4>
-                                Aún no tienes nada en tu carrito. <Link to={`/`}>  <Button variant="success">¡Revisa nuestros productos!</Button> </Link>
-                            </h4>
-                            
-                        </Col>
-                        <Col></Col>
-                    </Row>
-                </Container>
+                <EmptyCart />
             }
 
         </>
